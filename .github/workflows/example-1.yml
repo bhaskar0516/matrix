@@ -1,0 +1,16 @@
+name: Matrix flow in CI-Pipeline
+on: 
+  push
+  workflow_dispatch
+jobs:
+  deploy-job:
+    strategy:
+      matrix:
+        os: [ubuntu-latest,windows-latest]
+    runs-on: ${{ matrix.os}}
+    steps:
+      - name: Docker info
+        run: docker info
+      
+      - name: Run os images
+        run: docker run ${ matrix.os}}
